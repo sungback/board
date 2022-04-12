@@ -23,11 +23,13 @@ public class BoardController {
     public String list(Model model) {
         List<BoardDto> boardList = boardService.getBoardlist();
         model.addAttribute("boardList", boardList);
+        model.addAttribute("title", "[ 게시판 리스트 ]");
         return "board/list.html";
     }
 
     @GetMapping("/post")
-    public String write() {
+    public String write(Model model) {
+    	model.addAttribute("title", "[ 게시판 쓰기 ]");
         return "board/write.html";
     }
 
@@ -40,14 +42,16 @@ public class BoardController {
     @GetMapping("/post/{no}")
     public String detail(@PathVariable("no") Long no, Model model) {
         BoardDto boardDTO = boardService.getPost(no);
-        model.addAttribute("boardDto", boardDTO);
+        model.addAttribute("b", boardDTO);
+        model.addAttribute("title", "[ 게시판 상세 ]");
         return "board/detail.html";
     }
 
     @GetMapping("/post/edit/{no}")
     public String edit(@PathVariable("no") Long no, Model model) {
         BoardDto boardDTO = boardService.getPost(no);
-        model.addAttribute("boardDto", boardDTO);
+        model.addAttribute("b", boardDTO);
+        model.addAttribute("title", "[ 게시판 수정 ]");
         return "board/update.html";
     }
 

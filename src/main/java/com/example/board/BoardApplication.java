@@ -13,3 +13,7 @@ public class BoardApplication {
 	}
 
 }
+
+//  Thymeleaf 플러그인 설치
+// Help > Install New software에서 Work with >
+// http://www.thymeleaf.org/eclipse-plugin-update-site/

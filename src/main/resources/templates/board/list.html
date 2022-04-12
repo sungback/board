@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title th:text="${title}">Title</title>
     <link rel="stylesheet" th:href="@{/css/board.css}">
 </head>
 <body>
 <div th:insert="common/header.html" id="header"></div>
+<h2 th:text="${title}"></h2>
 <a th:href="@{/post}">글쓰기</a>
 <table>
     <thead>
@@ -18,20 +19,20 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="board : ${boardList}">
+    <tr th:each="b : ${boardList}">
         <td>
-            <span th:text="${board.id}"></span>
+            <span th:text="${b.id}"></span>
         </td>
         <td>
-            <a th:href="@{'/post/' + ${board.id}}">
-                <span th:text="${board.title}"></span>
+            <a th:href="@{'/post/' + ${b.id}}">
+                <span th:text="${b.title}"></span>
             </a>
         </td>
         <td>
-            <span th:text="${board.writer}"></span>
+            <span th:text="${b.writer}"></span>
         </td>
         <td>
-            <span th:text="${#temporals.format(board.createdDate, 'yyyy-MM-dd HH:mm')}"></span>
+            <span th:text="${#temporals.format(b.createdDate, 'yyyy-MM-dd HH:mm')}"></span>
         </td>
     </tr>
     </tbody>
